@@ -1,0 +1,18 @@
+<fetch>
+  <entity name="systemuser">
+    <attribute name="internalemailaddress" />
+    <attribute name="lastname" />
+    <attribute name="firstname" />
+    <attribute name="domainname" />
+    <link-entity name="systemuserroles" from="systemuserid" to="systemuserid" link-type="inner" alias="sur" intersect="true">
+      <link-entity name="role" from="roleid" to="roleid" link-type="inner" alias="role">
+        <attribute name="name" />
+        <attribute name="organizationidname" />
+        <attribute name="businessunitidname" />
+        <filter type="and">
+          <condition attribute="roleid" operator="eq" value="3d065fd6-d152-42ea-9694-1cf4d1b0fea5" />
+        </filter>
+      </link-entity>
+    </link-entity>
+  </entity>
+</fetch>

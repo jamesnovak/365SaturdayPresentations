@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\_source\Sample Code\MyXrmToolBoxPlugin\MyXrmToolBoxPlugin\bin\Debug\XrmToolBox.exe</StartProgram>
+    <StartArguments>/overridepath:.</StartArguments>
+  </PropertyGroup>
+</Project>

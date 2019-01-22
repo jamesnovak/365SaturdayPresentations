@@ -1,0 +1,19 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical">
+  <entity name="role">
+    <attribute name="name" />
+    <attribute name="businessunitid" />
+    <attribute name="roleid" />
+    <link-entity name="systemuserroles" from="roleid" to="roleid" link-type="inner" alias="sur" intersect="true">
+      <link-entity name="systemuser" from="systemuserid" to="systemuserid" link-type="inner" alias="user">
+        <attribute name="internalemailaddress" />
+        <attribute name="lastname" />
+        <attribute name="firstname" />
+        <attribute name="businessunitid" />
+        <attribute name="fullname" />
+        <filter type="and">
+          <condition attribute="domainname" operator="eq" value="admin@CRM113748.onmicrosoft.com" />
+        </filter>
+      </link-entity>
+    </link-entity>
+  </entity>
+</fetch>
