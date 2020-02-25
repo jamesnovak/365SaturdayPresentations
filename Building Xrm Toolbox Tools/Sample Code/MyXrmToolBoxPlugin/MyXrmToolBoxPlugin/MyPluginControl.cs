@@ -71,7 +71,8 @@ namespace MyXrmToolBoxPlugin
                     }
                     var result = args.Result as EntityCollection;
 
-                    listBoxSecurityRoles.Items.Clear();
+                    // listBoxSecurityRoles.Items.Clear();
+                    listBoxSecurityRoles.DataSource = null;
 
                     if (result != null)
                     {
@@ -149,25 +150,25 @@ namespace MyXrmToolBoxPlugin
                 {
                     var roleId = (string)args.Argument;
 
-            // Instantiate QueryExpression QEsystemuser
-            var QEsystemuser = new QueryExpression("systemuser");
+                    // Instantiate QueryExpression QEsystemuser
+                    var QEsystemuser = new QueryExpression("systemuser");
 
-            // Add columns to QEsystemuser.ColumnSet
-            QEsystemuser.ColumnSet.AddColumns("internalemailaddress", "lastname", "firstname", "domainname");
+                    // Add columns to QEsystemuser.ColumnSet
+                    QEsystemuser.ColumnSet.AddColumns("internalemailaddress", "lastname", "firstname", "domainname");
 
-            // Add link-entity QEsystemuser_systemuserroles
-            var QEsystemuser_systemuserroles = QEsystemuser.AddLink("systemuserroles", "systemuserid", "systemuserid");
+                    // Add link-entity QEsystemuser_systemuserroles
+                    var QEsystemuser_systemuserroles = QEsystemuser.AddLink("systemuserroles", "systemuserid", "systemuserid");
                     QEsystemuser_systemuserroles.EntityAlias = "sur";
 
-            // Add link-entity QEsystemuser_systemuserroles_role
-            var QEsystemuser_systemuserroles_role = QEsystemuser_systemuserroles.AddLink("role", "roleid", "roleid");
+                    // Add link-entity QEsystemuser_systemuserroles_role
+                    var QEsystemuser_systemuserroles_role = QEsystemuser_systemuserroles.AddLink("role", "roleid", "roleid");
                     QEsystemuser_systemuserroles_role.EntityAlias = "role";
 
-            // Add columns to QEsystemuser_systemuserroles_role.Columns
-            QEsystemuser_systemuserroles_role.Columns.AddColumns("name");
+                    // Add columns to QEsystemuser_systemuserroles_role.Columns
+                    QEsystemuser_systemuserroles_role.Columns.AddColumns("name");
 
-            // Define filter QEsystemuser_systemuserroles_role.LinkCriteria
-            QEsystemuser_systemuserroles_role.LinkCriteria.AddCondition("roleid", ConditionOperator.Equal, roleId);
+                    // Define filter QEsystemuser_systemuserroles_role.LinkCriteria
+                    QEsystemuser_systemuserroles_role.LinkCriteria.AddCondition("roleid", ConditionOperator.Equal, roleId);
 
 
                     args.Result = Service.RetrieveMultiple(QEsystemuser);
